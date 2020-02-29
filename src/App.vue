@@ -22,12 +22,12 @@
             <p class="texto">Get Current Location</p>
           </div>
 
-          <div class="contenedor" id="cuatro">
+          <div v-on:click="changePage(5)" class="contenedor" id="cuatro">
             <img class="icon" :src="urlImage">
             <p class="texto">Actividad 4</p>
           </div>
 
-          <div class="contenedor" id="cinco">
+          <div v-on:click="changePage(6)" class="contenedor" id="cinco">
             <img class="icon" :src="urlImage">
             <p class="texto">Actividad 5</p>
           </div>
@@ -38,6 +38,8 @@
         <mapa1 v-show="page == 2"/>
         <mapa2 v-show="page == 3"/>
         <mapa3 v-show="page == 4"/> 
+        <mapa4 v-show="page == 5"/> 
+        <mapa5 v-show="page == 6"/> 
         <br>
         <input class="btn btn-dark" type="button" v-if="page != 1" value="Regresar a menú" v-on:click="changePage(1)">
       </div>
@@ -51,12 +53,14 @@
 import mapa1 from './components/mapa1.vue'
 import mapa2 from './components/mapa2.vue'
 import mapa3 from './components/mapa3.vue'
+import mapa4 from './components/mapa4.vue'
+import mapa5 from './components/mapa5.vue'
 import image from "./assets/icon.png"
 
 export default {
   name: 'App',
   components: {
-    mapa1, mapa2, mapa3
+    mapa1, mapa2, mapa3, mapa4, mapa5
   }, 
   data(){
     return{

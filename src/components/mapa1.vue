@@ -18,14 +18,14 @@ import { Loader } from 'google-maps';
 
 export default {
     mounted: function () {
-    const loader = new Loader('AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA');
-    loader.load().then(function (google) {
+      const loader = new Loader('AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA');
+      loader.load().then(function (google) {
         var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 21.152639, lng: -101.711598},
-            zoom: 15,
-    });
-    map.data;
-});
+          center: { lat: 21.152639, lng: -101.711598 },
+          zoom: 15,
+        });
+        map.data;
+      });
     }
 }
 </script>
