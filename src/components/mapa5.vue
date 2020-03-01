@@ -10,6 +10,7 @@ import imagen from '../assets/logo.png'
 
 export default {
     mounted: function () {
+      var html = "<Papasconqueso, RUN <br> <img src=\"" + this.urlImagen1.toString() + "\">";
       mapsService.load().then(function (google) {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: 21.152639, lng: -101.711598 },
@@ -23,18 +24,28 @@ export default {
                         lng: position.coords.longitude
                     };
                     informacion.setPosition(pos);
-                    informacion.setContent("Papasconqueso, RUN <br> <img src='" + this.urlImagen + "'>");
+                    informacion.setContent(html);
                     informacion.open(map);
                     map.setCenter(pos);
                 });
             }
       });
     },
-    data(){
+    data(){ 
         return{
             urlImagen:  imagen
         }
     },
+    computed:{
+            urlImagen1: {
+                get: function () {
+                    return this.urlImagen;
+                },
+                set: function (v) {
+                    this.urlImagen = v;
+                }
+            }, 
+        },
     methods:{
         
     }
