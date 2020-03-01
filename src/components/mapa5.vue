@@ -5,13 +5,12 @@
 </template>
 
 <script>
-import { Loader } from 'google-maps';
+import mapsService from '../services/mapsService';
 import imagen from '../assets/logo.png'
 
 export default {
     mounted: function () {
-      const loader = new Loader('AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA');
-      loader.load().then(function (google) {
+      mapsService.load().then(function (google) {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: 21.152639, lng: -101.711598 },
           zoom: 15,
