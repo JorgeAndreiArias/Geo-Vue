@@ -15,7 +15,7 @@ export default {
           center: { lat: 21.152639, lng: -101.711598 },
           zoom: 15,
         });
-        informacion = new google.maps.InfoWindow;
+        var informacion = new google.maps.InfoWindow;
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(function(position){
                     var pos = { 
