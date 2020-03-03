@@ -31,6 +31,11 @@
             <img class="icon" :src="urlImage">
             <p class="texto">Actividad 5</p>
           </div>
+
+          <div v-on:click="changePage(7)" class="contenedor" id="dos">
+            <img class="cloud" :src="cloudImg">
+            <p class="texto">Cloud Firestore</p>
+          </div>
           <!-- Fin de Menu -->
         </div>
       </div>
@@ -40,6 +45,7 @@
         <mapa3 v-show="page == 4"/> 
         <mapa4 v-show="page == 5"/> 
         <mapa5 v-show="page == 6"/> 
+        <firebaseApp v-show="page == 7"/> 
         <br>
         <input class="btn btn-dark" type="button" v-if="page != 1" value="Regresar a menú" v-on:click="changePage(1)">
       </div>
@@ -55,17 +61,24 @@ import mapa2 from './components/mapa2.vue'
 import mapa3 from './components/mapa3.vue'
 import mapa4 from './components/mapa4.vue'
 import mapa5 from './components/mapa5.vue'
+
 import image from "./assets/icon.png"
+
+import cloudimg from "./assets/fireimg.png"
+
+import firebaseApp from './components/firestoreApp.vue'
+
 
 export default {
   name: 'App',
   components: {
-    mapa1, mapa2, mapa3, mapa4, mapa5
+    mapa1, mapa2, mapa3, mapa4, mapa5, firebaseApp
   }, 
   data(){
     return{
       page: 1,
-      urlImage: image
+      urlImage: image,
+      cloudImg: cloudimg,
     }
   },
   methods: {
@@ -77,6 +90,5 @@ export default {
 </script>
 
 <style scoped>
-
 @import url('./css/menu_style.css');
 </style>

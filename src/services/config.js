@@ -1,5 +1,5 @@
 const configService = {
-    token: 'AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA'
+    token: 'AIzaSyCX-kuHcr81wPA8DLnSYNyEnsSO_GF6oss'
 };
 
 export default configService;

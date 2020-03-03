@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div id="map"></div>
+     <div id="mapa1"></div>
   </div>
 </template>
 
@@ -12,8 +12,8 @@ export default {
     mounted: function () {
       var html = "<Papasconqueso, RUN <br> <img src=\"" + this.urlImagen1.toString() + "\">";
       mapsService.load().then(function (google) {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: { lat: 21.152639, lng: -101.711598 },
+        var map = new google.maps.Map(document.getElementById('mapa1'), {
+          center: { lat: 50.152639, lng: -100.3 },
           zoom: 15,
         });
         var informacion = new google.maps.InfoWindow;
