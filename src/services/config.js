@@ -1,5 +1,8 @@
+var serviceAccount = require("../keys/serviceKeyGoogleMaps.json");
+
 const configService = {
-    token: 'AIzaSyCX-kuHcr81wPA8DLnSYNyEnsSO_GF6oss'
+    token: serviceAccount.token
 };
 
+console.warn(configService);
 export default configService;
