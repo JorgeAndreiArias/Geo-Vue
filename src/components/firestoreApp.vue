@@ -10,9 +10,9 @@
     <ul>
       <li v-for="(product, index) in products" :key="index" >
         {{ product.nombre }} - {{ product.codigo}}
-        <!-- <button @click="deleteReptile(reptile)">
-          Remove
-        </button> -->
+        <button @click="deleteProduct(product)">
+          Eliminar
+        </button>
       </li>
     </ul>
   </div>
@@ -42,6 +42,9 @@ export default {
       this.nameOfProduct = '';
       this.codeOfProduct = '';
     },
+    deleteProduct(product){
+      this.$firestore.products.doc(product['.key']).delete();
+    }
   }
 
 }
