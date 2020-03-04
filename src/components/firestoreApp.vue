@@ -5,7 +5,7 @@
           <h1>Lista de productos</h1>
         </div>
         <div class="column">
-          <form  v-on:submit.prevent="addProduct($event)">
+          <form  v-on:submit.prevent="addProduct">
             <div class="form-group row">
               <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
               <div class="col-sm-10">
@@ -18,7 +18,7 @@
               <input type="text" v-model="codeOfProduct" class="form-control" placeholder="Código">
             </div>
           </div>
-          <button v-on:mouseover="mouseover()" v-on:mouseleave="mouseleave()" class="btn btn-primary" type="submit">Agregar</button>
+          <button class="btn btn-primary" type="submit">Agregar</button>
         </form>
       </div>
       <div>
@@ -37,7 +37,7 @@
               <td>{{ product.nombre }}</td>
               <td> {{ product.codigo}} </td>
               <td>
-                <button >
+                <button @click="deleteProduct(product)">
                   Eliminar
                 </button>
               </td>
@@ -49,8 +49,7 @@
   </div>
 </template>
 
-<script>
-import { db } from '../services/firebase.js'
+<script>import { db } from '../services/firebase.js'
 export default {
   data(){
     return{
@@ -90,6 +89,7 @@ export default {
   }
 
 }
+</script>
 </script>
 
 <style>
