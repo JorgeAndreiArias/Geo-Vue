@@ -1,20 +1,51 @@
 <template>
-  <div>
-     <h1>Lista de productos</h1>
-
-    <form v-on:submit.prevent="addProduct" id="formulario">
-        <input v-model="nameOfProduct" type="text" name="nombre" id="nombre" placeholder="Nombre">
-        <input v-model="codeOfProduct" type="text" name="codigo" id="codigo" placeholder="Código">
-        <button type="submit">Agregar</button>
-    </form>
-    <ul>
-      <li v-for="(product, index) in products" :key="index" >
-        {{ product.nombre }} - {{ product.codigo}}
-        <button @click="deleteProduct(product)">
-          Eliminar
-        </button>
-      </li>
-    </ul>
+  <div class="container-fluid">
+      <div class="container">
+        <div class="column">
+          <h1>Lista de productos</h1>
+        </div>
+        <div class="column">
+          <form  v-on:submit.prevent="addProduct($event)">
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" v-model="nameOfProduct" class="form-control" placeholder="Nombre">
+              </div>
+            </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Código</label>
+            <div class="col-sm-10">
+              <input type="text" v-model="codeOfProduct" class="form-control" placeholder="Código">
+            </div>
+          </div>
+          <button v-on:mouseover="mouseover()" v-on:mouseleave="mouseleave()" class="btn btn-primary" type="submit">Agregar</button>
+        </form>
+      </div>
+      <div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Código</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(product, index) in products" :key="index">
+              <th>{{ index }}</th>
+              <td>{{ product.nombre }}</td>
+              <td> {{ product.codigo}} </td>
+              <td>
+                <button >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +57,7 @@ export default {
       products: [],
       nameOfProduct: '',
       codeOfProduct: '',
+      mouse: false
     }
   },
   firestore(){
@@ -35,15 +67,25 @@ export default {
   },
   methods: {
     addProduct(){
-      this.$firestore.products.add({
-        nombre: this.nameOfProduct,
-        codigo: this.codeOfProduct
-      });
-      this.nameOfProduct = '';
-      this.codeOfProduct = '';
+          if(this.mouse){
+            this.$firestore.products.add({
+              nombre: this.nameOfProduct,
+              codigo: this.codeOfProduct
+            });
+            this.nameOfProduct = '';
+            this.codeOfProduct = '';
+          }else{
+            console.log('Click de manera programada');
+          }
     },
     deleteProduct(product){
       this.$firestore.products.doc(product['.key']).delete();
+    },
+    mouseover(){
+      this.mouse = true;
+    },
+    mouseleave(){
+      this.mouse = false;
     }
   }
 
