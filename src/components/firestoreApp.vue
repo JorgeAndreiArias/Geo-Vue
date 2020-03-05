@@ -18,7 +18,7 @@
               <input type="text" v-model="codeOfProduct" class="form-control" placeholder="Código">
             </div>
           </div>
-          <button class="btn btn-primary" type="submit">Agregar</button>
+          <button v-on:mouseover="mouseover()" v-on:mouseleave="mouseleave()" class="btn btn-primary" type="submit">Agregar</button>
         </form>
       </div>
       <div>
@@ -81,15 +81,16 @@ export default {
       this.$firestore.products.doc(product['.key']).delete();
     },
     mouseover(){
+      console.log(this.mouse);
       this.mouse = true;
     },
     mouseleave(){
+      console.log(this.mouse);
       this.mouse = false;
     }
   }
 
 }
-</script>
 </script>
 
 <style>
