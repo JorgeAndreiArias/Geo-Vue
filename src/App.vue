@@ -40,11 +40,11 @@
         </div>
       </div>
       <div class="container">
-        <mapa1 v-show="page == 2"/>
-        <mapa2 v-show="page == 3"/>
-        <mapa3 v-show="page == 4"/> 
-        <mapa4 v-show="page == 5"/> 
-        <mapa5 v-show="page == 6"/> 
+        <mapa1 v-if="page == 2"/>
+        <mapa2 v-if="page == 3"/>
+        <mapa3 v-if="page == 4"/> 
+        <mapa4 v-if="page == 5"/> 
+        <mapa5 v-if="page == 6"/> 
         <firebaseApp v-show="page == 7"/> 
         <br>
         <input class="btn btn-dark" type="button" v-if="page != 1" value="Regresar a menú" v-on:click="changePage(1)">
