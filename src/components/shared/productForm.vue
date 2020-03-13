@@ -34,8 +34,8 @@
             <!--  -->
           </div>
           <div class="modal-footer">
-              <button class="btn btn-danger" @click="$emit('close')">Cancelar</button> 
-            <button class="btn btn-primary" @click="editProduct()">Modificar</button>
+              <button class="btn btn-danger  btn-block" @click="$emit('close')">Cancelar</button> 
+            <button class="btn btn-primary  btn-block" @click="editProduct()">Modificar</button>
           </div>
         </div>
       </div>
