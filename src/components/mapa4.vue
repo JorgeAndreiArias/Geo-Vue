@@ -26,11 +26,11 @@ export default {
             }
         },
         muestraPosicion(posicion){
-            alert("Hola");
+            console.warn(posicion);
             this.coordenadas = posicion.coords.latitude + "," + posicion.coords.longitude;
             console.log(this.coordenadas);
             this.imagenUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + this.coordenadas + "&zoom=20&size=800x800&key=" + config.token;
-            console.log(this.url);
+            console.log(this.imagenUrl);
         }
     }
 }
