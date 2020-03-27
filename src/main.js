@@ -10,7 +10,11 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VueFirestore);
 
-const router = new VueRouter({ routes, mode: 'history' })
+const router = new VueRouter({ 
+  base: '/Geo-Vue/',
+  routes, 
+  mode: 'history' 
+})
 
 new Vue({
   render: h => h(App),

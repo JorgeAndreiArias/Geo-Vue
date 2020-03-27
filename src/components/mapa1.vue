@@ -24,7 +24,8 @@ export default {
       map: {
         '.key': 1,
         latitude: 21.152639,
-        longitude: -101.711598
+        longitude: -101.711598,
+        zoom: 15
       }
     };
   }

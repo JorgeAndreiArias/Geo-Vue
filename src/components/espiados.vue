@@ -4,7 +4,7 @@
       <form class="form-inline card m-3 p-3" v-on:submit.prevent="getLocation">
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputPassword2" class="sr-only">Name</label>
-          <input type="text" class="form-control" id="inputPassword2" placeholder="Name" />
+          <input type="text" class="form-control" v-model="name" id="inputPassword2" placeholder="Name" />
         </div>
         <button type="submit" class="btn btn-dark">Agregar</button>
       </form>
@@ -18,7 +18,8 @@ import { db } from "../services/firebase.js";
 export default {
   data() {
     return {
-      maps: []
+      maps: [],
+      name: ""
     };
   },
   firestore(){

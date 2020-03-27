@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="page == 1" class="container-fluid">
+    <div class="container-fluid">
       <div id="titulo">
         <p id="header">Curso de Sistemas Georeferenciados</p>
         <p id="subheader">Jorge Andrei Arias Montoya</p>
@@ -45,6 +45,26 @@
         <div v-on:click="changePage('spy')" class="contenedor" id="cinco">
           <img class="icon" :src="urlImage" />
           <p class="texto">Spy </p>
+        </div>
+
+        <div v-on:click="changePage('fetch')" class="contenedor" id="tres">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Fetch</p>
+        </div>
+
+        <div v-on:click="changePage('fetch2')" class="contenedor" id="cuatro">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Fetch 2</p>
+        </div>
+
+        <div v-on:click="changePage('fetch3')" class="contenedor" id="dos">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Fetch 3</p>
+        </div>
+
+        <div v-on:click="changePage('fetch4')" class="contenedor" id="cinco">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Fetch 4</p>
         </div>
         <!-- Fin de Menu -->
       </div>

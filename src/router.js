@@ -7,6 +7,10 @@ import firestore from './components/firestoreApp.vue'
 import listaEspiados from './components/listaEspiados.vue'
 import espiados from './components/espiados.vue'
 import index from './components/index.vue'
+import fetch from './components/fetch.vue'
+import fetch2 from './components/fetch2.vue'
+import fetch3 from './components/fetch3.vue'
+import fetch4 from './components/fetch4.vue'
 
 const routes = [
     { path: '/', component: index, name: 'index'},
@@ -18,6 +22,10 @@ const routes = [
     { path: '/cloudFirestore', component: firestore, name: 'cloudFirestore' },
     { path: '/listSpy', component: listaEspiados, name: 'listSpy' },
     { path: '/spy', component: espiados, name: 'spy' },
+    { path: '/fetch', component: fetch, name: 'fetch' },
+    { path: '/fetch2', component: fetch2, name: 'fetch2' },
+    { path: '/fetch3', component: fetch3, name: 'fetch3' },
+    { path: '/fetch4', component: fetch4, name: 'fetch4' }
 ]
 
 export default routes
