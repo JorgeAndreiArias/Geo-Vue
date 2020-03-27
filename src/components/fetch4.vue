@@ -30,8 +30,8 @@ export default {
     };
   },
   methods: {
-    getPaises() {
-      fetch("https://corona.lmao.ninja/countries")
+    async getPaises() {
+      await fetch("https://corona.lmao.ninja/countries")
         .then(response => {
           response
             .json()
