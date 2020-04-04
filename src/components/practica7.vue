@@ -32,9 +32,7 @@ export default {
     };
   },
   methods: {
-    setStyleMap(style){
-      console.log(style)
-    }
+    
   }
 };
 </script>
