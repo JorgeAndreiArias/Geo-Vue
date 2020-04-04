@@ -3,7 +3,7 @@
     <fb-mapa
       :mapa="map"
       :markers="marcadores"
-      class="mh-100 p-0 m-0"
+      :actividad="actividad"
       style="height: 100%; position: absolute !important;"
     />
   </div>
@@ -18,6 +18,7 @@ export default {
   },
   data() {
     return {
+      actividad: "fetch3",
       map: {
         ".key": "z",
         latitude: 0,
@@ -54,3 +55,4 @@ export default {
 
 <style>
 </style>
+

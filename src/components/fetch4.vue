@@ -1,6 +1,7 @@
 <template>
   <div>
     <fb-mapa
+      v-if="marcadores"
       :mapa="map"
       :markers="marcadores"
       class="mh-100 p-0 m-0"
@@ -39,11 +40,11 @@ export default {
               this.marcadores = paises;
             })
             .catch(error => {
-              console.error(error);
+              console.error("Error al convertir a json", error);
             });
         })
         .catch(error => {
-          console.error(error);
+          console.error("Error al extraer los datos", error);
         });
     }
   }

@@ -66,6 +66,14 @@
           <img class="icon" :src="urlImage" />
           <p class="texto">Fetch 4</p>
         </div>
+        <div v-on:click="changePage('practica7')" class="contenedor" id="cinco">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Practica 7</p>
+        </div>
+        <div v-on:click="changePage('practica8')" class="contenedor" id="cinco">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Practica 8</p>
+        </div>
         <!-- Fin de Menu -->
       </div>
     </div>

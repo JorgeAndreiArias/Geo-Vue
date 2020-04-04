@@ -1,11 +1,11 @@
 <template>
-  <div :id="getId" style=" width: 100%;
-  "></div>
+  <div :id="getId" style="width: 100%;"></div>
 </template>
 
 <script>
 import mapsService from "../../services/mapsService";
 import coronatimeIcon from "../../assets/coronatime.png";
+import MarkerClusterer from "node-js-marker-clusterer";
 
 export default {
   props: {
@@ -16,27 +16,53 @@ export default {
     markers: {
       type: Array,
       required: false
+    },
+    actividad: {
+      type: String,
+      required: true
     }
   },
   data() {
     return {
-      coronaicon: coronatimeIcon
+      coronaicon: coronatimeIcon,
+      googleMarkes: [],
+      map: {}
     };
   },
   mounted() {
-    let maps = this.mapa;
-    let icon = this.coronaicon;
+    this.initMap()
+  },
+  computed: {
+    getId() {
+      return this.mapa[".key"];
+    }
+  },
+  methods: {
+    initMap() {
+      mapsService.load().then(google => {
+        this.map = new google.maps.Map(
+          document.getElementById(this.mapa[".key"]),
+          {
+            center: {
+              lat: parseFloat(this.mapa.latitude),
+              lng: parseFloat(this.mapa.longitude)
+            },
+            zoom: this.mapa.zoom ? this.mapa.zoom : 15
+          }
+        );
+        console.warn(this.map.center);
+        if (this.actividad == "fetch3") {
+          this.practicaFetch3(google);
+        }
 
-    mapsService.load().then(google => {
-      let map = new google.maps.Map(document.getElementById(maps[".key"]), {
-        center: {
-          lat: parseFloat(maps.latitude),
-          lng: parseFloat(maps.longitude)
-        },
-        zoom: maps.zoom
+        if (this.actividad == "Actividad7") {
+          this.actividad7(google);
+        }
       });
+    },
+    practicaFetch3(google) {
       for (var marcador of this.markers) {
-        var información =
+        var informacion =
           "<strong>País:</strong> " +
           marcador.country +
           "<br><strong>Casos:</strong> " +
@@ -57,29 +83,43 @@ export default {
           marcador.casesPerOneMillion;
 
         var infowindow = new google.maps.InfoWindow({
-          content: información
+          content: informacion
         });
-
         let marker = new google.maps.Marker({
-          map: map,
+          map: this.map,
           position: new google.maps.LatLng(
             marcador.countryInfo.lat,
             marcador.countryInfo.long
           ),
           title: marcador.country,
-          icon: icon
+          icon: this.coronaicon
         });
 
         marker.addListener("click", function() {
-          infowindow.open(map, marker);
+          infowindow.open(this.map, marker);
         });
       }
-    });
-  },
-  computed: {
-    getId() {
-      return this.mapa[".key"];
-    }
+    },
+    actividad7(google) {
+      let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let cuenta = 1;
+      this.markers.forEach(marker => {
+        let marcador = new google.maps.Marker({
+          map: this.map,
+          position: marker.countryInfo,
+          label: labels[cuenta % labels.length]
+        });
+        this.googleMarkes.push(marcador);
+        cuenta++;
+      });
+      let makerCluster = new MarkerClusterer(this.map, this.googleMarkes, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+        maxZoom: 10
+      });
+      makerCluster;
+    },
+
   }
 };
 </script>

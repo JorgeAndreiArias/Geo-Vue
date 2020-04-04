@@ -4,7 +4,7 @@
       <div class="row m-5">
         <div class="col-12 p-5">
           <h1 class="text-center">Google Maps con Bootstrap</h1>
-          <fb-mapa :mapa="map" style="height: 30rem;"/>
+          <fb-mapa :mapa="map" :actividad="actividad" style="height: 30rem;"/>
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      actividad: "General",
       map: {
         '.key': 1,
         latitude: 21.152639,
