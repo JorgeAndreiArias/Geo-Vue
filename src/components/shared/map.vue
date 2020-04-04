@@ -1,5 +1,22 @@
 <template>
-  <div :id="getId" style="width: 100%;"></div>
+  <div style="width: 100%;">
+    <div class="row p-3" v-if="actividad === 'Actividad7'">
+      <div class="col-3 text-center">
+        <button class="btn btn-primary btn-block" @click="setStyleMap('roadmap')">roadmap</button>
+      </div>
+      <div class="col-3 text-center">
+        <button class="btn btn-warning btn-block" @click="setStyleMap('satellite')">satellite</button>
+      </div>
+      <div class="col-3 text-center">
+        <button class="btn btn-danger btn-block" @click="setStyleMap('hybrid')">hybrid</button>
+      </div>
+      <div class="col-3 text-center">
+        <button class="btn btn-success btn-block" @click="setStyleMap('terrain')">terrain</button>
+      </div>
+    </div>
+
+    <div :id="getId" class="row mx-auto" :style="getStyle"></div>
+  </div>
 </template>
 
 <script>
@@ -30,11 +47,27 @@ export default {
     };
   },
   mounted() {
-    this.initMap()
+    this.initMap();
   },
   computed: {
     getId() {
       return this.mapa[".key"];
+    },
+    getStyle(){
+      let style = ''
+      if(this.actividad == "Actividad7"){
+        style = 'height: 92%;'
+      }
+      if(this.actividad == "fetch3" || this.actividad == "fetch4"){
+        style = 'height: 100%;'
+      }
+      if(this.actividad == "lista"){
+        style = 'height: 15rem;'
+      }
+      if(this.actividad == "general"){
+        style = 'height: 30rem;'
+      }
+      return style
     }
   },
   methods: {
@@ -50,8 +83,7 @@ export default {
             zoom: this.mapa.zoom ? this.mapa.zoom : 15
           }
         );
-        console.warn(this.map.center);
-        if (this.actividad == "fetch3") {
+        if (this.actividad == "fetch3" || this.actividad == "fetch4") {
           this.practicaFetch3(google);
         }
 
@@ -119,7 +151,9 @@ export default {
       });
       makerCluster;
     },
-
+    setStyleMap(style){
+      this.map.setMapTypeId(style)
+    }    
   }
 };
 </script>

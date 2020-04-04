@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import FbMapa from "./shared/map.vue"
-import markers from "../data/markersPractica7.json"
+import FbMapa from "./shared/map.vue";
+import markers from "../data/markersPractica7.json";
 
 export default {
   components: {
@@ -24,16 +24,20 @@ export default {
       actividad: "Actividad7",
       map: {
         ".key": "q",
-        latitude: 31.563910,
+        latitude: 31.56391,
         longitude: 47.154312,
         zoom: 3
       },
       marcadores: markers
     };
   },
-  methods: {}
+  methods: {
+    setStyleMap(style){
+      console.log(style)
+    }
+  }
 };
 </script>
 
-<style>
+<style scoped>
 </style>

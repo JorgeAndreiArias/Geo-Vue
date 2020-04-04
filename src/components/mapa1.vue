@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      actividad: "General",
+      actividad: "general",
       map: {
         '.key': 1,
         latitude: 21.152639,

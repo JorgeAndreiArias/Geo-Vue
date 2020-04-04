@@ -4,6 +4,7 @@
       v-if="marcadores"
       :mapa="map"
       :markers="marcadores"
+      :actividad="actividad"
       class="mh-100 p-0 m-0"
       style="height: 100%; position: absolute !important;"
     />
@@ -21,6 +22,7 @@ export default {
   },
   data() {
     return {
+      actividad: "fetch4",
       map: {
         ".key": "z",
         latitude: 0,
