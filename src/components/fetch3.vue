@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      actividad: "fetch3",
+      actividad: "estilo",
       map: {
         ".key": "z",
         latitude: 0,

@@ -1,6 +1,5 @@
 <template>
   <div style="width: 100%;">
-    
     <div class="row p-3" v-if="actividad === 'Actividad7'">
       <div class="col-3 text-center">
         <button class="btn btn-primary btn-block" @click="setStyleMap('roadmap')">roadmap</button>
@@ -38,6 +37,10 @@ export default {
     actividad: {
       type: String,
       required: true
+    },
+    stylo: {
+      type: Array,
+      required: false
     }
   },
   data() {
@@ -45,7 +48,7 @@ export default {
       coronaicon: coronatimeIcon,
       googleMarkes: [],
       map: {},
-      lang: 'es'
+      lang: "es"
     };
   },
   mounted() {
@@ -57,7 +60,7 @@ export default {
     },
     getStyle() {
       let style = "";
-      if (this.actividad == "Actividad7" ) {
+      if (this.actividad == "Actividad7") {
         style = "height: 92%;";
       }
       if (this.actividad == "fetch3" || this.actividad == "fetch4") {
@@ -68,6 +71,9 @@ export default {
       }
       if (this.actividad == "general") {
         style = "height: 30rem;";
+      }
+      if (this.actividad == "estilo") {
+        style = "height: 100%;";
       }
       return style;
     }
@@ -82,8 +88,7 @@ export default {
               lat: parseFloat(this.mapa.latitude),
               lng: parseFloat(this.mapa.longitude)
             },
-            zoom: this.mapa.zoom ? this.mapa.zoom : 15,
-            
+            zoom: this.mapa.zoom ? this.mapa.zoom : 15
           }
         );
         if (this.actividad == "fetch3" || this.actividad == "fetch4") {
@@ -92,6 +97,9 @@ export default {
 
         if (this.actividad == "Actividad7") {
           this.actividad7(google);
+        }
+        if (this.actividad == "estilo") {
+          this.addStyle(google);
         }
       });
     },
@@ -157,6 +165,13 @@ export default {
     setStyleMap(style) {
       this.map.setMapTypeId(style);
     },
+    addStyle(google) {
+      var styledMapType = new google.maps.StyledMapType(this.stylo, {
+        name: "Mapa Oscuro"
+      });
+      this.map.mapTypes.set("style_map", styledMapType);
+      this.map.setMapTypeId("style_map");
+    }
   }
 };
 </script>

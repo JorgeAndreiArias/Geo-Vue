@@ -74,6 +74,10 @@
           <img class="icon" :src="urlImage" />
           <p class="texto">Practica 8</p>
         </div>
+        <div v-on:click="changePage('estilo')" class="contenedor" id="dos">
+          <img class="icon" :src="urlImage" />
+          <p class="texto">Estilo</p>
+        </div>
         <!-- Fin de Menu -->
       </div>
     </div>

@@ -13,6 +13,7 @@ import fetch3 from './components/fetch3.vue'
 import fetch4 from './components/fetch4.vue'
 import practica7 from './components/practica7.vue'
 import practica8 from './components/practica8.vue'
+import estilo from './components/mapStyled.vue'
 
 const routes = [
     { path: '/', component: index, name: 'index'},
@@ -29,7 +30,8 @@ const routes = [
     { path: '/fetch3', component: fetch3, name: 'fetch3' },
     { path: '/fetch4', component: fetch4, name: 'fetch4' },
     { path: '/practica7', component: practica7, name: 'practica7' },
-    { path: '/practica8', component: practica8, name: 'practica8' }
+    { path: '/practica8', component: practica8, name: 'practica8' },
+    { path: '/estilo', component: estilo, name: 'estilo'}
 
 ]
 
